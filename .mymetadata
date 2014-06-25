@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="AdManageMent"
+  id="myeclipse.1403292324649"
+  context-root="/AdManageMent"
+  j2ee-spec="6.0"
+  archive="AdManageMent.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
