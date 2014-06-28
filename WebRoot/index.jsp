@@ -38,7 +38,7 @@
 	</div>
 	</header>
 	<div class="container-fluid">
-
+		<a href="getAdvertList.lol"  role="button" class="btn btn-default btn-sm">Show</a>	
 		<form action="getAdvertById.do"></form>
 
 		<table class="table table-striped">
@@ -98,11 +98,6 @@
 	<div class="container-fluid">
 		<div></div>
 	</div>
-	</footer>touch README.md
-git init
-git add README.md
-git commit -m "first commit"
-git remote add origin https://github.com/birch0930/AdvertManagement.git
-git push -u origin master
+	</footer>
 </body>
 </html>
