@@ -21,46 +21,43 @@ public class AdvertController {
 	
 	private Advert advert;
 
-	@RequestMapping(value = "/user", method = RequestMethod.GET)
-	public String getAdvertList() {
-		System.out.println("getAssetList");
-		return "index";
-	}
 	
 	@RequestMapping(value = "/getAdvertById", method = RequestMethod.GET)
 	public String getAdvertById(Model model, HttpServletRequest request) {
-		System.out.println("get");
 		String id =  request.getParameter("advertId");
 		if(id == null || id.equals(""))return "ERROR";
-		advert = advertService.getAdvertById(Integer.parseInt(id));
+		Advert a = new Advert();
+		a.setAdvertId(Integer.parseInt(id));
+		advert = advertService.getAdvert(a);
 		model.addAttribute("advert", advert);
 		return "index";
 	}
 	
 	@RequestMapping(value = "/getAdvertList", method = RequestMethod.GET)
 	public String getAdvertList(Model model, HttpServletRequest request) {
+		advertService.updateRemainedDate();
 		List<Advert>  advertList= advertService.getAdvertList();
 		model.addAttribute("advertList", advertList);
 		return "index";
 	}
 	
 	@RequestMapping(value = "/suspendAd", method = RequestMethod.GET)
-	public String suspendAdById(Model model, HttpServletRequest request) {
+	public String suspendAd(Model model, HttpServletRequest request) {
 		String id =  request.getParameter("advertId");
 		if(id == null || id.equals(""))return "ERROR";
-		advertService.suspendAdById(Integer.parseInt(id));
-		
-		
+		Advert a = new Advert();
+		a.setAdvertId(Integer.parseInt(id));
+		advertService.suspend(a);
 		return "redirect:/getAdvertList.lol";
 	}
 	
 	@RequestMapping(value = "/resumeAd", method = RequestMethod.GET)
-	public String resumeAdById(Model model, HttpServletRequest request) {
+	public String resumeAd(Model model, HttpServletRequest request) {
 		String id =  request.getParameter("advertId");
 		if(id == null || id.equals(""))return "ERROR";
-		advertService.resumeAdById(Integer.parseInt(id));
-		
-		
+		Advert a = new Advert();
+		a.setAdvertId(Integer.parseInt(id));
+		advertService.resume(a);	
 		return "redirect:/getAdvertList.lol";
 	}
 

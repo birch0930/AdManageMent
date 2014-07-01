@@ -11,48 +11,56 @@
 
 <mapper namespace="com.vansky.adm.persistence.AdvertMapper">
 
-	<cache />
 
 	<!-- TODO MyBatis 3 does not map booleans to integers <update id="updateProfile" 
 		parameterType="Account"> UPDATE PROFILE SET LANGPREF = #{languagePreference}, 
 		FAVCATEGORY = #{favouriteCategoryId}, MYLISTOPT = #{listOption}, BANNEROPT 
 		= #{bannerOption} WHERE USERID = #{username} </update> -->
 	
-	<select id="getAdvertById" resultType="Advert">
+	<select id="getAdvert" resultType="Advert">
     SELECT
       *
     FROM ADVERT
-    WHERE ADVERT.ADVERTID = #{id}
+    WHERE ADVERT.ADVERTID = #{advertId}
     
   </select>
   
   <select id="getAdvertList" resultType="Advert">
     SELECT
       *
-    FROM ADVERT   
+    FROM ADVERT WHERE STATUS != -1 limit 0,20  ORDER BY  REMAINEDPERIOD  
   </select>
 
-	<update id="updateAdvert" parameterType="Advert">
+<!--	<update id="suspendAdvert" parameterType="Advert">
 		UPDATE ADVERT SET
 		USERNAME=#{username}, 
-	<!--ADVERTTYPEID=#{advertTypeId},-->
 		STARTDATE=#{startDate},
 		EXPIRYDATE=#{expiryDate},
 		SERVICEPERIOD=#{servicePeriod},
 		REMAINEDPERIOD=#{remainedPeriod},
+		SUSPENDDATE = #{suspendDate},
 		STATUS = #{status}
 		WHERE ADVERTID = #{advertId}
-	</update>
+	</update>	-->
 	
-	<update id="suspendAdvert" parameterType="int">
+	<update id="suspendAdvert" parameterType="Advert">
 		UPDATE ADVERT SET
+		SUSPENDDATE = #{suspendDate},
 		STATUS = 0
 		WHERE ADVERTID = #{advertId}
 	</update>
 	
-	
-	<update id="resumeAdvert" parameterType="int">
+	<update id="updateRemainedDate" parameterType="Advert">
 		UPDATE ADVERT SET
+		REMAINEDPERIOD=#{remainedPeriod},
+		STATUS = #{status}
+		WHERE ADVERTID = #{advertId}
+	</update>
+
+	<update id="resumeAdvert" parameterType="Advert">
+		UPDATE ADVERT SET
+		EXPIRYDATE=#{expiryDate},
+		REMAINEDPERIOD=#{remainedPeriod},
 		STATUS = 1
 		WHERE ADVERTID = #{advertId}
 	</update>

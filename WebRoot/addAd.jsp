@@ -64,16 +64,9 @@
 								dateStyle="medium" />  
 						</td>
 						<td>${var.servicePeriod} 天</td>
-						<c:choose>
-						<c:when test="${var.remainedPeriod >= 0 }">
-							<td>${var.remainedPeriod} 天</td>
-						</c:when>
-						<c:otherwise>
-							<td>已过期</td>
-						</c:otherwise>
-						</c:choose>
-						<c:choose>
-						<c:when test="${var.status == 0 }">
+						<td>${var.remainedPeriod} 天</td>
+
+						<c:if test="${var.status == 0 }">
 							<td>暂停</td>
 							<td><a role="button"
 								href="suspendAd.lol?advertId=${var.advertId}"
@@ -81,9 +74,8 @@
 								role="button" href="resumeAd.lol?advertId=${var.advertId}"
 								class="btn btn-primary">Resume</a>
 							</td>
-						</c:when>
-						
-						<c:when test="${var.status ==1}">
+						</c:if>
+						<c:if test="${var.status ==1}">
 							<td>有效</td>
 							<td><a role="button"
 								href="suspendAd.lol?advertId=${var.advertId}"
@@ -91,17 +83,8 @@
 								href="resumeAd.lol?advertId=${var.advertId}"
 								class="btn btn-primary disabled">Resume</a>
 							</td>
-						</c:when>
-						<c:otherwise>
-							<td>无效</td>
-							<td><a role="button"
-								href="suspendAd.lol?advertId=${var.advertId}"
-								class="btn btn-primary disabled">Suspend</a> <a role="button"
-								href="resumeAd.lol?advertId=${var.advertId}"
-								class="btn btn-primary disabled">Resume</a>
-							</td>
-						</c:otherwise>
-						</c:choose>
+						</c:if>
+
 					</tr>
 				</c:forEach>
 			</tbody>

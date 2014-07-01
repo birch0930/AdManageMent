@@ -5,11 +5,12 @@ import java.util.List;
 import com.vansky.adm.domain.Advert;
 
 public interface AdvertMapper {
-	public Advert getAdvertById(int id);
+	public Advert getAdvert(Advert advert);
 	public List<Advert> getAdvertList();
-	public void saveAdvert(Advert a);
-	public void delete(Advert a);	
-	public void updateAdvert(Advert a);
-	public void suspendAdvert(int advertId);
-	public void resumeAdvert(int advertId);
+	public void saveAdvert(Advert advert);
+	public void delete(Advert advert);	
+	public void updateAdvert(Advert advert);
+	public void suspendAdvert(Advert advert);
+	public void resumeAdvert(Advert advert);
+	public void updateRemainedDate(Advert advert);
 }

@@ -1,16 +1,21 @@
 CREATE TABLE IF NOT EXISTS ADVERT(
 advertId int PRIMARY KEY
 ,username varchar(20) 
-,startDate timestamp not null	
-,expiryDate timestamp  not null
+,startDate date not null	
+,expiryDate date  not null
 ,servicePeriod int  not null
 ,remainedPeriod int default 0
 ,status int default 0 not null
+,suspendDate timestamp null
 )character set=utf8;
 
 
 drop table ADVERT;
 select * from ADVERT;
+update ADVERT set STATUS = 0 WHERE ADVERTID = 9;
+
+UPDATE ADVERT SET   REMAINEDPERIOD=5   WHERE ADVERTID = 0
+delete from ADVERT;
 
 CREATE TABLE IF NOT EXISTS ADVERTTYPE(
 advertTypeId int primary key

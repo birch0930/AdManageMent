@@ -11,24 +11,31 @@ public class Advert implements Serializable {
 	private Date expiryDate;
 	private int servicePeriod;
 	private int remainedPeriod;
+	private Date suspendDate;
+	private Date resumeDate;
 	private int status;
 
 	public Advert() {
 
 	}
 
+
+	
+
 	public Advert(int advertId, String username, Date startDate,
 			Date expiryDate, int servicePeriod, int remainedPeriod, int status) {
 		super();
 		this.advertId = advertId;
 		this.username = username;
-		// this.advertTypeId = advertTypeId;
 		this.startDate = startDate;
 		this.expiryDate = expiryDate;
 		this.servicePeriod = servicePeriod;
 		this.remainedPeriod = remainedPeriod;
 		this.status = status;
 	}
+
+
+
 
 	public int getAdvertId() {
 		return advertId;
@@ -93,4 +100,31 @@ public class Advert implements Serializable {
 		this.remainedPeriod = remainedPeriod;
 	}
 
+
+	public Date getResumeDate() {
+		return resumeDate;
+	}
+
+
+	public void setResumeDate(Date resumeDate) {
+		this.resumeDate = resumeDate;
+	}
+
+
+
+
+	public Date getSuspendDate() {
+		return suspendDate;
+	}
+
+
+
+
+	public void setSuspendDate(Date suspendDate) {
+		this.suspendDate = suspendDate;
+	}
+
+
+
+ 
 }
